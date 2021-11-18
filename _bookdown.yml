@@ -1,4 +1,7 @@
 book_filename: "Documentation"
+rmd_files:
+- index.Rmd
+- 01-intro.Rmd
 language:
   ui:
     chapter_name: "Chapter "

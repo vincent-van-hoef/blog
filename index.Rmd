@@ -2,8 +2,6 @@
 title: "Technical Documentation"
 author: "Vincent van Hoef"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: bookdown::bs4_book
 documentclass: book
 bibliography: book.bib
 biblio-style: apalike
@@ -14,4 +12,11 @@ github-repo: vincent-van-hoef/blog
 # Introduction
 
 This is a test blog.
+
+
+```{r}
+
+plot(1:10)
+
+```
 

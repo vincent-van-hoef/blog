@@ -11,5 +11,7 @@ link-citations: yes
 github-repo: vincent-van-hoef/blog
 ---
 
-# Prerequisites
+# Introduction
+
+This is a test blog.
 

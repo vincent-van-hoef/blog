@@ -12,7 +12,7 @@ jobs:
     name: Render-Book
     runs-on: ubuntu-latest
     container:
-      image: rocker/verse:4
+      image: rocker/verse:4.1.2
     steps:
       - uses: actions/checkout@v1
       - name: Render Book

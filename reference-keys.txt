@@ -1,4 +1,2 @@
-fig:nice-fig
-tab:nice-tab
 introduction
 intro

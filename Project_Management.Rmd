@@ -1,5 +1,9 @@
 # Project Management
 
+## How to set up a new support Project
+
+TODO Describe framework and steps to set up a support project incoporating Docker, Github, command line tools, R and Nextflow
+
 ## Page setup
 
 How to set up this page?

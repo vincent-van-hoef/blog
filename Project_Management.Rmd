@@ -12,4 +12,4 @@ plot(1:10)
 
 ## R workflow using {Targets}
 
-The official Targets documentation can be found [here](https://books.ropensci.org/targets/).
+The official Targets documentation can be found [here](https://books.ropensci.org/targets/){target="_blank"}.

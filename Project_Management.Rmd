@@ -4,7 +4,7 @@
 
 How to set up this page?
 
-This page is renderedu using a minimal docker container, so you have to use a specific parameter (`dev = "svglite"`) to display Cairo graphs.
+This page is renderedu using a minimal docker container, so you have to use a specific parameter (`dev = "svglite"` in the code block definition) to display Cairo graphs.
 
 ```{r , dev = "svglite", echo = TRUE}
 plot(1:10)

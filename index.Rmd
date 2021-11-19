@@ -1,5 +1,5 @@
 --- 
-title: "Technical Documentation"
+title: "Tips, Tricks and Tutorials"
 author: "Vincent van Hoef"
 date: "`r Sys.Date()`"
 documentclass: book
@@ -11,12 +11,5 @@ github-repo: vincent-van-hoef/blog
 
 # Introduction
 
-This is a test blog.
-
-
-```{r}
-
-plot(1:10)
-
-```
+The aim of this site is to collect useful tips and tricks which can help to make life easier.
 

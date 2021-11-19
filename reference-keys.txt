@@ -3,3 +3,6 @@ project-management
 page-setup
 r-workflow-using-targets
 code-snippets
+r
+bash
+docker

@@ -2,6 +2,7 @@ book_filename: "Documentation"
 rmd_files:
 - index.Rmd
 - Project_Management.Rmd
+- snippets.Rmd
 language:
   ui:
     chapter_name: "Chapter "

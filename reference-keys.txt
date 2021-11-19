@@ -1,5 +1,6 @@
 introduction
 project-management
+how-to-set-up-a-new-support-project
 page-setup
 r-workflow-using-targets
 code-snippets

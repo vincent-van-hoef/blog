@@ -12,4 +12,3 @@ github-repo: vincent-van-hoef/blog
 # Introduction
 
 The aim of this site is to collect useful tips and tricks which can help to make life easier.
-

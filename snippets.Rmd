@@ -5,3 +5,5 @@
 ## Bash
 
 ## Docker
+
+- command to run interactive Rstudio session from Rocker container `docker run --rm -ti -p 8787:8787 -e PASSWORD=admin -v $(pwd):/home/rstudio analysis5204:0.1`

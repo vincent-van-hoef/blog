@@ -24,7 +24,7 @@ How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?
 
 First run WebGestaltR and direct the results to your dedicated Result folder
 
-```
+
 # Example WebGestaltR run
 library("WebGestaltR")
 
@@ -38,13 +38,13 @@ enrichResult <- WebGestaltR(enrichMethod="GSEA",
                             topThr=10, 
                             minNum=5,
                             outputDirectory=outputDirectory)
-```
+
 
 Then in your report include a chunk that creates an iframe which directs to the main html file.
 
-```
+
 knitr::include_url("../Results/Project_1638369584/Report_1638369584.html", height = "800px")
-```
+
 
 Then render the book as normal.
 

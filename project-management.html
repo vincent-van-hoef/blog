@@ -40,8 +40,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="active" href="project-management.html"><span class="header-section-number">2</span> Project Management</a></li>
-<li><a class="" href="example-webgestaltr-run.html"><span class="header-section-number">3</span> Example WebGestaltR run</a></li>
-<li><a class="" href="code-snippets.html"><span class="header-section-number">4</span> Code Snippets</a></li>
+<li><a class="" href="code-snippets.html"><span class="header-section-number">3</span> Code Snippets</a></li>
 </ul>
 
         <div class="book-extra">
@@ -81,11 +80,41 @@
 </h2>
 <p>How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?</p>
 <p>First run WebGestaltR and direct the results to your dedicated Result folder</p>
+<div id="example-webgestaltr-run" class="section level3" number="2.4.1">
+<h3>
+<span class="header-section-number">2.4.1</span> Example WebGestaltR run<a class="anchor" aria-label="anchor" href="#example-webgestaltr-run"><i class="fas fa-link"></i></a>
+</h3>
+<p>library(“WebGestaltR”)</p>
+<p>rankFile &lt;- system.file(“extdata,” “GeneRankList.rnk,” package=“WebGestaltR”)
+outputDirectory &lt;- getwd()
+enrichResult &lt;- WebGestaltR(enrichMethod=“GSEA,”
+organism=“hsapiens,”
+enrichDatabase=“pathway_KEGG,” interestGeneFile=rankFile,
+interestGeneType=“genesymbol,”
+sigMethod=“top,”
+topThr=10,
+minNum=5,
+outputDirectory=outputDirectory)</p>
+<p>Then in your report include a chunk that creates an iframe which directs to the main html file.</p>
+<p>knitr::include_url(“../Results/Project_1638369584/Report_1638369584.html,” height = “800px”)</p>
+<p>Then render the book as normal.</p>
+<div class="rmdnote">
+<p>Do not forget to move the resulting Report folder including the book one level up in the folder structure to preserve all figure links!</p>
+</div>
+</div>
+</div>
+<div id="tips" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Create figures in PDF or TIFF so they can be manually edited later! This might be faster for small tweaks of specific plots…</li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introduction</a></div>
-<div class="next"><a href="example-webgestaltr-run.html"><span class="header-section-number">3</span> Example WebGestaltR run</a></div>
+<div class="next"><a href="code-snippets.html"><span class="header-section-number">3</span> Code Snippets</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -93,7 +122,10 @@
 <li><a class="nav-link" href="#how-to-set-up-a-new-support-project"><span class="header-section-number">2.1</span> How to set up a new support Project</a></li>
 <li><a class="nav-link" href="#page-setup"><span class="header-section-number">2.2</span> Page setup</a></li>
 <li><a class="nav-link" href="#r-workflow-using-targets"><span class="header-section-number">2.3</span> R workflow using {Targets}</a></li>
-<li><a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.4</span> Importing WebGestaltR</a></li>
+<li>
+<a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.4</span> Importing WebGestaltR</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#example-webgestaltr-run"><span class="header-section-number">2.4.1</span> Example WebGestaltR run</a></li></ul>
+</li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">2.5</span> Tips</a></li>
 </ul>
 
       <div class="book-extra">

@@ -3,6 +3,7 @@ project-management
 how-to-set-up-a-new-support-project
 page-setup
 r-workflow-using-targets
+glimma-v2
 importing-webgestaltr
 example-webgestaltr-run
 tips

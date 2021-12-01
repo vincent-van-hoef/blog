@@ -25,7 +25,7 @@ How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?
 First run WebGestaltR and direct the results to your dedicated Result folder
 
 
-# Example WebGestaltR run
+### Example WebGestaltR run
 library("WebGestaltR")
 
 rankFile <- system.file("extdata", "GeneRankList.rnk", package="WebGestaltR")

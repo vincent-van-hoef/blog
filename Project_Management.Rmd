@@ -22,6 +22,28 @@ The official Targets documentation can be found [here](https://books.ropensci.or
 
 Use glimma v2 for interactive plots of differential expression results
 
+```{r , dev = "svglite", echo = TRUE, eval = FALSE}
+### Example DESeq + Glimma run; save resulting html in Results directory
+BiocManager::install("Glimma")
+
+dge <- readRDS(
+  system.file("RNAseq123/dge.rds", package = "Glimma"))
+dds <- DESeq2::DESeqDataSetFromMatrix(
+  countData = dge$counts,
+  colData = dge$samples,
+  rowData = dge$genes,
+  design = ~group
+)
+dds <- DESeq2::DESeq(dds, quiet=TRUE)
+glimmaVolcano(dds, html = "../Results/dge.html")
+```
+
+Then insert it in an iframe in the rmdnote
+
+```{r , dev = "svglite", echo = TRUE, eval = FALSE}
+knitr::include_url("../Results/dge.html", height = "1000px")
+```
+
 ## Importing WebGestaltR
 
 How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?

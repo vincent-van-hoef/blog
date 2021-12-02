@@ -79,6 +79,23 @@
 <span class="header-section-number">2.4</span> Glimma V2<a class="anchor" aria-label="anchor" href="#glimma-v2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use glimma v2 for interactive plots of differential expression results</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">### Example DESeq + Glimma run; save resulting html in Results directory</span>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"Glimma"</span><span class="op">)</span>
+
+<span class="va">dge</span> <span class="op">&lt;-</span> <span class="fu">readRDS</span><span class="op">(</span>
+  <span class="fu">system.file</span><span class="op">(</span><span class="st">"RNAseq123/dge.rds"</span>, package <span class="op">=</span> <span class="st">"Glimma"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq2</span><span class="fu">::</span><span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span>
+  countData <span class="op">=</span> <span class="va">dge</span><span class="op">$</span><span class="va">counts</span>,
+  colData <span class="op">=</span> <span class="va">dge</span><span class="op">$</span><span class="va">samples</span>,
+  rowData <span class="op">=</span> <span class="va">dge</span><span class="op">$</span><span class="va">genes</span>,
+  design <span class="op">=</span> <span class="op">~</span><span class="va">group</span>
+<span class="op">)</span>
+<span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq2</span><span class="fu">::</span><span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span>, quiet<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">glimmaVolcano</span><span class="op">(</span><span class="va">dds</span>, html <span class="op">=</span> <span class="st">"../Results/dge.html"</span><span class="op">)</span></code></pre></div>
+<p>Then insert it in an iframe in the rmdnote</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_url.html">include_url</a></span><span class="op">(</span><span class="st">"../Results/dge.html"</span>, height <span class="op">=</span> <span class="st">"1000px"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="importing-webgestaltr" class="section level2" number="2.5">
 <h2>
@@ -86,7 +103,7 @@
 </h2>
 <p>How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?</p>
 <p>First run WebGestaltR and direct the results to your dedicated Result folder</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">### Example WebGestaltR run</span>
 <span class="kw">library</span><span class="op">(</span><span class="st"><a href="https://github.com/bzhanglab/WebGestaltR">"WebGestaltR"</a></span><span class="op">)</span>
 
@@ -101,7 +118,7 @@
                             minNum<span class="op">=</span><span class="fl">5</span>,
                             outputDirectory<span class="op">=</span><span class="va">outputDirectory</span><span class="op">)</span></code></pre></div>
 <p>Then in your report include a chunk that creates an iframe which directs to the main html file.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_url.html">include_url</a></span><span class="op">(</span><span class="st">"../Results/Project_1638369584/Report_1638369584.html"</span>, height <span class="op">=</span> <span class="st">"800px"</span><span class="op">)</span></code></pre></div>
 <p>Then render the book as normal.</p>
 <div class="rmdnote">

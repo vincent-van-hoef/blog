@@ -86,27 +86,26 @@
 </h2>
 <p>How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?</p>
 <p>First run WebGestaltR and direct the results to your dedicated Result folder</p>
-<div id="example-webgestaltr-run" class="section level3" number="2.5.1">
-<h3>
-<span class="header-section-number">2.5.1</span> Example WebGestaltR run<a class="anchor" aria-label="anchor" href="#example-webgestaltr-run"><i class="fas fa-link"></i></a>
-</h3>
-<p>library(“WebGestaltR”)</p>
-<p>rankFile &lt;- system.file(“extdata,” “GeneRankList.rnk,” package=“WebGestaltR”)
-outputDirectory &lt;- getwd()
-enrichResult &lt;- WebGestaltR(enrichMethod=“GSEA,”
-organism=“hsapiens,”
-enrichDatabase=“pathway_KEGG,” interestGeneFile=rankFile,
-interestGeneType=“genesymbol,”
-sigMethod=“top,”
-topThr=10,
-minNum=5,
-outputDirectory=outputDirectory)</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">### Example WebGestaltR run</span>
+<span class="kw">library</span><span class="op">(</span><span class="st"><a href="https://github.com/bzhanglab/WebGestaltR">"WebGestaltR"</a></span><span class="op">)</span>
+
+<span class="va">rankFile</span> <span class="op">&lt;-</span> <span class="fu">system.file</span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"GeneRankList.rnk"</span>, package<span class="op">=</span><span class="st">"WebGestaltR"</span><span class="op">)</span>
+<span class="va">outputDirectory</span> <span class="op">&lt;-</span> <span class="fu">getwd</span><span class="op">(</span><span class="op">)</span>
+<span class="va">enrichResult</span> <span class="op">&lt;-</span> <span class="fu">WebGestaltR</span><span class="op">(</span>enrichMethod<span class="op">=</span><span class="st">"GSEA"</span>, 
+                            organism<span class="op">=</span><span class="st">"hsapiens"</span>,
+                            enrichDatabase<span class="op">=</span><span class="st">"pathway_KEGG"</span>, interestGeneFile<span class="op">=</span><span class="va">rankFile</span>,
+                            interestGeneType<span class="op">=</span><span class="st">"genesymbol"</span>, 
+                            sigMethod<span class="op">=</span><span class="st">"top"</span>, 
+                            topThr<span class="op">=</span><span class="fl">10</span>, 
+                            minNum<span class="op">=</span><span class="fl">5</span>,
+                            outputDirectory<span class="op">=</span><span class="va">outputDirectory</span><span class="op">)</span></code></pre></div>
 <p>Then in your report include a chunk that creates an iframe which directs to the main html file.</p>
-<p>knitr::include_url(“../Results/Project_1638369584/Report_1638369584.html,” height = “800px”)</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_url.html">include_url</a></span><span class="op">(</span><span class="st">"../Results/Project_1638369584/Report_1638369584.html"</span>, height <span class="op">=</span> <span class="st">"800px"</span><span class="op">)</span></code></pre></div>
 <p>Then render the book as normal.</p>
 <div class="rmdnote">
 <p>Do not forget to move the resulting Report folder including the book one level up in the folder structure to preserve all figure links!</p>
-</div>
 </div>
 </div>
 <div id="tips" class="section level2" number="2.6">
@@ -129,9 +128,7 @@ outputDirectory=outputDirectory)</p>
 <li><a class="nav-link" href="#page-setup"><span class="header-section-number">2.2</span> Page setup</a></li>
 <li><a class="nav-link" href="#r-workflow-using-targets"><span class="header-section-number">2.3</span> R workflow using {Targets}</a></li>
 <li><a class="nav-link" href="#glimma-v2"><span class="header-section-number">2.4</span> Glimma V2</a></li>
-<li>
-<a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.5</span> Importing WebGestaltR</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#example-webgestaltr-run"><span class="header-section-number">2.5.1</span> Example WebGestaltR run</a></li></ul>
-</li>
+<li><a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.5</span> Importing WebGestaltR</a></li>
 <li><a class="nav-link" href="#tips"><span class="header-section-number">2.6</span> Tips</a></li>
 </ul>
 
@@ -149,7 +146,7 @@ outputDirectory=outputDirectory)</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Tips, Tricks and Tutorials</strong>" was written by Vincent van Hoef. It was last built on 2021-12-01.</p>
+    <p>"<strong>Tips, Tricks and Tutorials</strong>" was written by Vincent van Hoef. It was last built on 2021-12-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

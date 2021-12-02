@@ -38,7 +38,7 @@ dds <- DESeq2::DESeq(dds, quiet=TRUE)
 glimmaVolcano(dds, html = "../Results/dge.html")
 ```
 
-Then insert it in an iframe in the rmdnote
+Then insert it in an iframe in the .Rmd file
 
 ```{r , dev = "svglite", echo = TRUE, eval = FALSE}
 knitr::include_url("../Results/dge.html", height = "1000px")
@@ -49,7 +49,6 @@ knitr::include_url("../Results/dge.html", height = "1000px")
 How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?
 
 First run WebGestaltR and direct the results to your dedicated Result folder
-
 
 ```{r , dev = "svglite", echo = TRUE, eval = FALSE}
 ### Example WebGestaltR run

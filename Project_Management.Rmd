@@ -84,4 +84,5 @@ Do not forget to move the resulting Report folder including the book one level u
 ## Tips
 
 - Create figures in PDF or TIFF so they can be manually edited later! This might be faster for small tweaks of specific plots...
+- PDF images do not load in html output when viewed in Chrome, PNG works. To circumvene make figures both in png and pdf or install safari browser.
 

@@ -8,4 +8,4 @@ RUN wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-linux-
 RUN installr -d \
     -t "libxml2-dev gnutls-dev openssl-dev libx11-dev cairo-dev libxt-dev" \
     -a "libxml2 cairo libx11 font-xfree86-type1" \
-    bookdown bslib xml2 downlit svglite
+    bookdown bslib xml2 downlit svglite withr

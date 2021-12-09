@@ -81,6 +81,11 @@ Do not forget to move the resulting Report folder including the book one level u
 
 :::
 
+## mitch
+
+Use the mitch package for multi-contrast GSEa and interactive html report (1-20 contrasts). More infor [here](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-06856-9).
+
+
 ## Tips
 
 - Create figures in PDF or TIFF so they can be manually edited later! This might be faster for small tweaks of specific plots...

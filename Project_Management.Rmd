@@ -66,14 +66,22 @@ enrichResult <- WebGestaltR(enrichMethod="GSEA",
                             outputDirectory=outputDirectory)
 ```
 
-Then in your report include a chunk that creates an iframe which directs to the main html file.
-
+Then in your report include a chunk that creates an iframe which directs to the main html filee
 
 ```{r , dev = "svglite", echo = TRUE, eval = FALSE}
 knitr::include_url("../Results/Project_1638369584/Report_1638369584.html", height = "800px")
 ```
 
-Then render the book as normal.
+Then render the book as normal. 
+
+Prior to including the url remove the header and footer with an appropriate sed command, if so desired.
+
+```{r , dev = "svglite", echo = TRUE, eval = FALSE}
+# Modify command, this one seemed to work on MacOS...
+system2("sed -i '' -e '/<header>/,/<\/header>/d' Report_1639128194.html")
+```
+
+
 
 ::: {.rmdnote}
 

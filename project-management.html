@@ -123,7 +123,8 @@
 <p>Then render the book as normal.</p>
 <p>Prior to including the url remove the header and footer with an appropriate sed command, if so desired.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="project-management.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify command, this one seemed to work on MacOS...</span></span>
-<span id="cb6-2"><a href="project-management.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;header&gt;/,/&lt;\/header&gt;/d' Report_1639128194.html"</span>)</span></code></pre></div>
+<span id="cb6-2"><a href="project-management.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;header&gt;/,/&lt;\/header&gt;/d' Report_1639128194.html"</span>)</span>
+<span id="cb6-3"><a href="project-management.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;footer&gt;/,/&lt;\/footer&gt;/d' Report_1639128194.html"</span>)</span></code></pre></div>
 <div class="rmdnote">
 <p>Do not forget to move the resulting Report folder including the book one level up in the folder structure to preserve all figure links!</p>
 </div>

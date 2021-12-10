@@ -79,6 +79,7 @@ Prior to including the url remove the header and footer with an appropriate sed 
 ```{r , dev = "svglite", echo = TRUE, eval = FALSE}
 # Modify command, this one seemed to work on MacOS...
 system2("sed -i '' -e '/<header>/,/<\/header>/d' Report_1639128194.html")
+system2("sed -i '' -e '/<footer>/,/<\/footer>/d' Report_1639128194.html")
 ```
 
 

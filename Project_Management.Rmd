@@ -16,7 +16,7 @@ plot(1:10)
 
 ## Dropdown figure change with Vue
 
-```{r data-paths, dev = "svglite", echo = TRUE, eval = FALSE}
+```{r, dev = "svglite", echo = TRUE, eval = FALSE}
 library( jsonlite )
 ```
 
@@ -27,7 +27,7 @@ plts <- jsonlite::toJSON(plots, dataframe = "rows", pretty=TRUE)
 cat("<script> var allPlts=", plts, "</script>")
 ```
 
-```{=html, dev = "svglite", echo = TRUE, eval = FALSE}
+```{r, dev = "svglite", echo = TRUE, eval = FALSE}
 <!-- include VueJS first -->
 <script src="https://unpkg.com/vue@latest"></script>
 <!-- use the latest vue-select release -->

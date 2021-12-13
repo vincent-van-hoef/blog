@@ -68,18 +68,49 @@
 <code class="sourceCode R"><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="Documentation_files/figure-html/unnamed-chunk-1-1.svg" width="672"></div>
 </div>
-<div id="r-workflow-using-targets" class="section level2" number="2.3">
+<div id="dropdown-figure-change-with-vue" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> R workflow using {Targets}<a class="anchor" aria-label="anchor" href="#r-workflow-using-targets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Dropdown figure change with Vue<a class="anchor" aria-label="anchor" href="#dropdown-figure-change-with-vue"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">library</span><span class="op">(</span> <span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span> <span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>locs <span class="op">=</span> <span class="fu">list.files</span><span class="op">(</span><span class="st">"./Project_1639128194_GSEA"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span><span class="fu">list.files</span><span class="op">(</span><span class="st">"./Project_1639128194_GSEA"</span>, full.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">plts</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">toJSON</a></span><span class="op">(</span><span class="va">plots</span>, dataframe <span class="op">=</span> <span class="st">"rows"</span>, pretty<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">cat</span><span class="op">(</span><span class="st">"&lt;script&gt; var allPlts="</span>, <span class="va">plts</span>, <span class="st">"&lt;/script&gt;"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="project-management.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span> include VueJS first <span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb4-2"><a href="project-management.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>script src<span class="ot">=</span><span class="st">"https://unpkg.com/vue@latest"</span><span class="sc">&gt;</span><span class="er">&lt;/</span>script<span class="sc">&gt;</span></span>
+<span id="cb4-3"><a href="project-management.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span><span class="sc">!--</span> use the latest vue<span class="sc">-</span>select release <span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb4-4"><a href="project-management.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>script src<span class="ot">=</span><span class="st">"https://unpkg.com/vue-select@latest"</span><span class="sc">&gt;</span><span class="er">&lt;/</span>script<span class="sc">&gt;</span></span>
+<span id="cb4-5"><a href="project-management.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>link rel<span class="ot">=</span><span class="st">"stylesheet"</span> href<span class="ot">=</span><span class="st">"https://unpkg.com/vue-select@latest/dist/vue-select.css"</span><span class="sc">&gt;</span></span>
+<span id="cb4-6"><a href="project-management.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="project-management.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>div id<span class="ot">=</span><span class="st">"app"</span><span class="sc">&gt;</span></span>
+<span id="cb4-8"><a href="project-management.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>h1<span class="sc">&gt;</span>Select a gene<span class="sc">&lt;</span><span class="er">/</span>h1<span class="sc">&gt;</span></span>
+<span id="cb4-9"><a href="project-management.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>v<span class="sc">-</span>select label<span class="ot">=</span><span class="st">"name"</span> <span class="sc">:</span>options<span class="ot">=</span><span class="st">"options"</span> <span class="sc">:</span>reduce<span class="ot">=</span><span class="st">"option =&gt; option.locs"</span> v<span class="sc">-</span>model<span class="ot">=</span><span class="st">"selected"</span> placeholder<span class="ot">=</span><span class="st">"Select a gene"</span><span class="sc">&gt;</span><span class="er">&lt;/</span>v<span class="sc">-</span>select<span class="sc">&gt;</span></span>
+<span id="cb4-10"><a href="project-management.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img <span class="sc">:</span>src<span class="ot">=</span><span class="st">"selected"</span><span class="sc">&gt;</span><span class="er">&lt;/</span>img<span class="sc">&gt;</span></span>
+<span id="cb4-11"><a href="project-management.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="project-management.html#cb5-1" aria-hidden="true" tabindex="-1"></a>Vue<span class="op">.</span><span class="fu">component</span>(<span class="st">'v-select'</span><span class="op">,</span> VueSelect<span class="op">.</span><span class="at">VueSelect</span>)</span>
+<span id="cb5-2"><a href="project-management.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="fu">Vue</span>({</span>
+<span id="cb5-3"><a href="project-management.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">el</span><span class="op">:</span> <span class="st">'#app'</span><span class="op">,</span></span>
+<span id="cb5-4"><a href="project-management.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> {</span>
+<span id="cb5-5"><a href="project-management.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">selected</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span></span>
+<span id="cb5-6"><a href="project-management.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">options</span><span class="op">:</span> allPlts</span>
+<span id="cb5-7"><a href="project-management.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-8"><a href="project-management.html#cb5-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+</div>
+<div id="r-workflow-using-targets" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> R workflow using {Targets}<a class="anchor" aria-label="anchor" href="#r-workflow-using-targets"><i class="fas fa-link"></i></a>
 </h2>
 <p>The official Targets documentation can be found <a href="https://books.ropensci.org/targets/" target="blank">here</a>.</p>
 </div>
-<div id="glimma-v2" class="section level2" number="2.4">
+<div id="glimma-v2" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.4</span> Glimma V2<a class="anchor" aria-label="anchor" href="#glimma-v2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Glimma V2<a class="anchor" aria-label="anchor" href="#glimma-v2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use glimma v2 for interactive plots of differential expression results</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">### Example DESeq + Glimma run; save resulting html in Results directory</span>
 <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"Glimma"</span><span class="op">)</span>
 
@@ -94,16 +125,16 @@
 <span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq2</span><span class="fu">::</span><span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span>, quiet<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu">glimmaVolcano</span><span class="op">(</span><span class="va">dds</span>, html <span class="op">=</span> <span class="st">"../Results/dge.html"</span><span class="op">)</span></code></pre></div>
 <p>Then insert it in an iframe in the .Rmd file</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_url.html">include_url</a></span><span class="op">(</span><span class="st">"../Results/dge.html"</span>, height <span class="op">=</span> <span class="st">"1000px"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="importing-webgestaltr" class="section level2" number="2.5">
+<div id="importing-webgestaltr" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.5</span> Importing WebGestaltR<a class="anchor" aria-label="anchor" href="#importing-webgestaltr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Importing WebGestaltR<a class="anchor" aria-label="anchor" href="#importing-webgestaltr"><i class="fas fa-link"></i></a>
 </h2>
 <p>How to include a WebGestaltR result webpage in a bookdown or Rmarkdown report?</p>
 <p>First run WebGestaltR and direct the results to your dedicated Result folder</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">### Example WebGestaltR run</span>
 <span class="kw">library</span><span class="op">(</span><span class="st"><a href="https://github.com/bzhanglab/WebGestaltR">"WebGestaltR"</a></span><span class="op">)</span>
 
@@ -118,26 +149,26 @@
                             minNum<span class="op">=</span><span class="fl">5</span>,
                             outputDirectory<span class="op">=</span><span class="va">outputDirectory</span><span class="op">)</span></code></pre></div>
 <p>Then in your report include a chunk that creates an iframe which directs to the main html filee</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_url.html">include_url</a></span><span class="op">(</span><span class="st">"../Results/Project_1638369584/Report_1638369584.html"</span>, height <span class="op">=</span> <span class="st">"800px"</span><span class="op">)</span></code></pre></div>
 <p>Then render the book as normal.</p>
 <p>Prior to including the url remove the header and footer with an appropriate sed command, if so desired.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="project-management.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify command, this one seemed to work on MacOS...</span></span>
-<span id="cb6-2"><a href="project-management.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;header&gt;/,/&lt;\/header&gt;/d' Report_1639128194.html"</span>)</span>
-<span id="cb6-3"><a href="project-management.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;footer&gt;/,/&lt;\/footer&gt;/d' Report_1639128194.html"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="project-management.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify command, this one seemed to work on MacOS...</span></span>
+<span id="cb10-2"><a href="project-management.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;header&gt;/,/&lt;\/header&gt;/d' Report_1639128194.html"</span>)</span>
+<span id="cb10-3"><a href="project-management.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">"sed -i '' -e '/&lt;footer&gt;/,/&lt;\/footer&gt;/d' Report_1639128194.html"</span>)</span></code></pre></div>
 <div class="rmdnote">
 <p>Do not forget to move the resulting Report folder including the book one level up in the folder structure to preserve all figure links!</p>
 </div>
 </div>
-<div id="mitch" class="section level2" number="2.6">
+<div id="mitch" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.6</span> mitch<a class="anchor" aria-label="anchor" href="#mitch"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> mitch<a class="anchor" aria-label="anchor" href="#mitch"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use the mitch package for multi-contrast GSEa and interactive html report (1-20 contrasts). More infor <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-06856-9">here</a>.</p>
 </div>
-<div id="tips" class="section level2" number="2.7">
+<div id="tips" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.7</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Create figures in PDF or TIFF so they can be manually edited later! This might be faster for small tweaks of specific plots…</li>
@@ -154,11 +185,12 @@
 <li><a class="nav-link" href="#project-management"><span class="header-section-number">2</span> Project Management</a></li>
 <li><a class="nav-link" href="#how-to-set-up-a-new-support-project"><span class="header-section-number">2.1</span> How to set up a new support Project</a></li>
 <li><a class="nav-link" href="#page-setup"><span class="header-section-number">2.2</span> Page setup</a></li>
-<li><a class="nav-link" href="#r-workflow-using-targets"><span class="header-section-number">2.3</span> R workflow using {Targets}</a></li>
-<li><a class="nav-link" href="#glimma-v2"><span class="header-section-number">2.4</span> Glimma V2</a></li>
-<li><a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.5</span> Importing WebGestaltR</a></li>
-<li><a class="nav-link" href="#mitch"><span class="header-section-number">2.6</span> mitch</a></li>
-<li><a class="nav-link" href="#tips"><span class="header-section-number">2.7</span> Tips</a></li>
+<li><a class="nav-link" href="#dropdown-figure-change-with-vue"><span class="header-section-number">2.3</span> Dropdown figure change with Vue</a></li>
+<li><a class="nav-link" href="#r-workflow-using-targets"><span class="header-section-number">2.4</span> R workflow using {Targets}</a></li>
+<li><a class="nav-link" href="#glimma-v2"><span class="header-section-number">2.5</span> Glimma V2</a></li>
+<li><a class="nav-link" href="#importing-webgestaltr"><span class="header-section-number">2.6</span> Importing WebGestaltR</a></li>
+<li><a class="nav-link" href="#mitch"><span class="header-section-number">2.7</span> mitch</a></li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">2.8</span> Tips</a></li>
 </ul>
 
       <div class="book-extra">
@@ -175,7 +207,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Tips, Tricks and Tutorials</strong>" was written by Vincent van Hoef. It was last built on 2021-12-10.</p>
+    <p>"<strong>Tips, Tricks and Tutorials</strong>" was written by Vincent van Hoef. It was last built on 2021-12-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

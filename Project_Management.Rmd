@@ -14,6 +14,44 @@ This page is rendered using a minimal docker container, so you have to use a spe
 plot(1:10)
 ```
 
+## Dropdown figure change with Vue
+
+```{r data-paths, dev = "svglite", echo = TRUE, eval = FALSE}
+library( jsonlite )
+```
+
+```{r, dev = "svglite", echo = TRUE, eval = FALSE}
+plots <- data.frame(locs = list.files("./Project_1639128194_GSEA", full.names = TRUE))
+plots$name <-list.files("./Project_1639128194_GSEA", full.names = FALSE)
+plts <- jsonlite::toJSON(plots, dataframe = "rows", pretty=TRUE)
+cat("<script> var allPlts=", plts, "</script>")
+```
+
+```{=html, dev = "svglite", echo = TRUE, eval = FALSE}
+<!-- include VueJS first -->
+<script src="https://unpkg.com/vue@latest"></script>
+<!-- use the latest vue-select release -->
+<script src="https://unpkg.com/vue-select@latest"></script>
+<link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+
+<div id="app">
+  <h1>Select a gene</h1>
+  <v-select label="name" :options="options" :reduce="option => option.locs" v-model="selected" placeholder="Select a gene"></v-select>
+<img :src="selected"></img>
+</div>
+```
+
+```{js, dev = "svglite", echo = TRUE, eval = FALSE}
+Vue.component('v-select', VueSelect.VueSelect)
+new Vue({
+  el: '#app',
+  data: {
+    selected: '',
+    options: allPlts
+  }
+})
+```
+
 ## R workflow using {Targets}
 
 The official Targets documentation can be found [here](https://books.ropensci.org/targets/){target="blank"}.
